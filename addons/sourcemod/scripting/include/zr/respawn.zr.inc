@@ -38,58 +38,58 @@ enum ZR_RespawnCondition
 
 /**
  * Spawns a player into the round.
- * 
+ *
  * @param client            The client index.
  * @param condition         Optional. Set respawn condition, defaults to current
  *                          ZR settings. See ZR_RespawnCondition for details.
  * @error                   Invalid client index, not connected or already alive.
  */
-native ZR_RespawnClient(client, ZR_RespawnCondition:condition = ZR_Repsawn_Default);
+native void ZR_RespawnClient(int client, ZR_RespawnCondition condition = ZR_Repsawn_Default);
 
 /**
  * Called right before ZR is about to respawn a player.
  * Here you can modify any variable or stop the action entirely.
- * 
+ *
  * @param client            The client index.
  * @param condition         Respawn condition. See ZR_RespawnCondition for
  *                          details.
  *
  * @return      Plugin_Handled to block respawn.
  */
-forward Action:ZR_OnClientRespawn(&client, &ZR_RespawnCondition:condition);
+forward Action ZR_OnClientRespawn(int &client, ZR_RespawnCondition &condition);
 
 /**
  * Called after ZR respawned a player.
- * 
+ *
  * @param client            The client index.
  * @param condition         Current condition of the respawned player. See
  *                          ZR_RespawnCondition for details.
  */
-forward ZR_OnClientRespawned(client, ZR_RespawnCondition:condition);
+forward void ZR_OnClientRespawned(int client, ZR_RespawnCondition condition);
 
 /**
  * Set if a player died by a suicide or world damage.
- 
+
  * Note: This will change the respawn condition.
  * Note: This value is reset to default by ZR when a zombie player dies.
- * 
+ *
  * @param client    The client index.
  * @param suicide   True to say the player suicided, false if killed by another
  *                  player.
  *
  * @error           Invalid client index or not connected.
  */
-native ZR_SetKilledByWorld(client, bool:suicide);
+native void ZR_SetKilledByWorld(int client, bool suicide);
 
 /**
  * Get whether the player died by a suicide or world damage.
  *
  * Note: This value is only valid after death event, and before respawn.
- * 
+ *
  * @param client    The client index.
- * 
+ *
  * @return          True if the player died by suicide, false if killed by
  *                  another player.
  * @error           Invalid client index or not connected.
  */
-native bool:ZR_GetKilledByWorld(client);
+native bool ZR_GetKilledByWorld(int client);
