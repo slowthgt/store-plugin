@@ -46,7 +46,7 @@ public Tracers_OnPluginStart()
 
 public Tracers_OnMapStart()
 {
-	g_iBeam = PrecacheModel2(g_eCvars[g_cvarTracerMaterial][sCache], true);
+	g_iBeam = PrecacheModel2(g_eCvars[g_cvarTracerMaterial].sCache, true);
 }
 
 public Tracers_Reset()
@@ -94,7 +94,7 @@ public Action:Tracers_BulletImpact(Handle:event,const String:name[],bool:dontBro
 		m_fImpact[1] = GetEventFloat(event, "y");
 		m_fImpact[2] = GetEventFloat(event, "z");
 		
-		TE_SetupBeamPoints(m_fOrigin, m_fImpact, g_iBeam, 0, 0, 0, Float:g_eCvars[g_cvarTracerLife][aCache], Float:g_eCvars[g_cvarTracerWidth][aCache], Float:g_eCvars[g_cvarTracerWidth][aCache], 1, 0.0, g_aColors[idx], 0);
+		TE_SetupBeamPoints(m_fOrigin, m_fImpact, g_iBeam, 0, 0, 0, Float:g_eCvars[g_cvarTracerLife].aCache, Float:g_eCvars[g_cvarTracerWidth].aCache, Float:g_eCvars[g_cvarTracerWidth].aCache, 1, 0.0, g_aColors[idx], 0);
 		TE_SendToAll();
 	}
 
