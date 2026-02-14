@@ -79,10 +79,10 @@ public Betting_OnClientDisconnect(client)
 
 public Action:Command_Bet(client, args)
 {
-	if(!g_eCvars[g_cvarEnableBetting][aCache])
+	if(!g_eCvars[g_cvarEnableBetting].aCache)
 		return Plugin_Handled;
 
-	if(g_iBettingStart+g_eCvars[g_cvarBettingPeriod][aCache] < GetTime())
+	if(g_iBettingStart+g_eCvars[g_cvarBettingPeriod].aCache < GetTime())
 	{
 		Chat(client, "%t", "Betting Period Over");
 		return Plugin_Handled;
